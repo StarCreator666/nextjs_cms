@@ -25,7 +25,7 @@ export default async function handler(
   }
 
   let event: Stripe.Event
-  //Handle different types of events
+  //handle events from strpe
 
   try {
     event = stripe.webhooks.constructEvent(

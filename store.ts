@@ -42,7 +42,7 @@ export const useCartStore = create<CartState>()(
         }),
       removeProduct: (item) =>
         set((state) => {
-          //Check if the item exists and remove quantity - 1
+          //Cek if the item exist and remove quantity - 1
           const existingItem = state.cart.find(
             (cartItem) => cartItem.id === item.id
           )
@@ -55,7 +55,7 @@ export const useCartStore = create<CartState>()(
             })
             return { cart: updatedCart }
           } else {
-            //Remove item from cart
+            //Remove item from cart if just inly have 1 value
             const filteredCart = state.cart.filter(
               (cartItem) => cartItem.id !== item.id
             )

@@ -12,7 +12,7 @@ import OrderConfirmed from "./OrderConfirmed"
 export default function Cart() {
   const cartStore = useCartStore()
 
-  //Total Price
+  //Total Price || Total Harga
   const totalPrice = cartStore.cart.reduce((acc, item) => {
     return acc + item.unit_amount! * item.quantity!
   }, 0)
@@ -29,12 +29,12 @@ export default function Cart() {
       <motion.div
         layout
         onClick={(e) => e.stopPropagation()}
-        className="bg-base-200 absolute right-0 top-0  h-screen bg-white w-full lg:w-2/5"
+        className="bg-base-200 absolute right-0 top-0  h-screen p-12 overflow-y-scroll  w-full lg:w-2/5"
       >
         {cartStore.onCheckout === "cart" && (
           <button
             onClick={() => cartStore.toggleCart()}
-            className="text-sm font-bold mx-4 pt-8"
+            className="text-sm font-bold pb-12"
           >
             Back to store 🏃
           </button>
@@ -42,7 +42,7 @@ export default function Cart() {
         {cartStore.onCheckout === "checkout" && (
           <button
             onClick={() => cartStore.setCheckout("cart")}
-            className="text-sm font-bold mx-4 pt-8"
+            className="text-sm font-bold pb-12"
           >
             Check your cart 🛒
           </button>
@@ -106,11 +106,11 @@ export default function Cart() {
         )}
         {/* Checkout and total */}
         {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" ? (
-          <motion.div layout className="mx-4">
+          <motion.div layout>
             <p>Total: {formatPrice(totalPrice)}</p>
             <button
               onClick={() => cartStore.setCheckout("checkout")}
-              className="py-2 mt-4 bg-primary w-full rounded-md text-white bg-teal-700"
+              className="py-2 mt-4 bg-primary w-full rounded-md text-white"
             >
               Checkout
             </button>
@@ -125,10 +125,10 @@ export default function Cart() {
               animate={{ scale: 1, rotateZ: 0, opacity: 0.75 }}
               initial={{ scale: 0.5, rotateZ: -10, opacity: 0 }}
               exit={{ scale: 0.5, rotateZ: -10, opacity: 0 }}
-              className="flex flex-col items-center gap-12 text-xl font-medium pt-40 opacity-75"
+              className="flex flex-col items-center gap-12 text-2xl font-medium pt-56 opacity-75"
             >
               <h1>Uhhh ohhh...it's empty 😢</h1>
-              <Image src={basket} alt="empty cart" width={150} height={150} />
+              <Image src={basket} alt="empty cart" width={200} height={200} />
             </motion.div>
           )}
         </AnimatePresence>

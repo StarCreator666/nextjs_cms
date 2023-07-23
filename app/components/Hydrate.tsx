@@ -7,7 +7,7 @@ import { SessionProvider } from "next-auth/react"
 export default function Hydrate({ children }: { children: ReactNode }) {
   const [isHydrated, setIsHydrated] = useState(false)
   const themeStore = useThemeStore()
-  //Wait till Nextjs rehydration completes
+
   useEffect(() => {
     setIsHydrated(true)
   }, [])

@@ -47,7 +47,7 @@ export default async function handler(
     },
   }
 
-  //Check if the payment intent exists just update the order
+  //Cek if the payment intent exists just update the order
   if (payment_intent_id) {
     const current_intent = await stripe.paymentIntents.retrieve(
       payment_intent_id
@@ -57,7 +57,7 @@ export default async function handler(
         payment_intent_id,
         { amount: total }
       )
-      //Fetch order with product ids
+      //Fetch order with product id
       const [existing_order, updated_order] = await Promise.all([
         prisma.order.findFirst({
           where: { paymentIntentID: updated_intent.id },
